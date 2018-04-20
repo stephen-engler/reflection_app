@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import ViewItem from './ViewItem/ViewItem'
 
 
 
@@ -10,9 +11,14 @@ class ViewPage extends Component {
         })
     }
     render() {
+        let reflection = this.props.state.reflectionList.map((reflection)=>{
+            return (
+                <ViewItem key={reflection.id} reflection={reflection}/>
+            )
+        })
         return (
-            <div className="App">
-                <p>view page</p>
+            <div>
+                {reflection}
             </div>
         );
     }

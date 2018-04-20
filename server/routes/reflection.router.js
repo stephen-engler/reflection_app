@@ -16,7 +16,6 @@ router.post('/', function(req,res){
 })
 
 router.get('/', function(req,res){
-    console.log('in router get');
     let queryText = `SELECT * FROM "reflection" ORDER BY id;`
     pool.query(queryText)
         .then((response)=>{
