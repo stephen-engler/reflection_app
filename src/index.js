@@ -24,6 +24,7 @@ const sagaMiddleware = createSagaMiddleware();
 
 function* rootSaga(){
     yield takeEvery('ADD_REF', addRefSaga);
+    yield takeEvery('GET_REF', getRefSaga);
 }
 
 function* addRefSaga(action){
@@ -33,10 +34,30 @@ function* addRefSaga(action){
         console.log('an error in add reflection saga');
     }
 }
+// gets the reflections from the server
+//saves in reflection list reducer
+function* getRefSaga(action){
+    try{
+        let refList = yield call(axios.get, '/reflection');
+        yield put({
+            type: 'SET_REFLECTION',
+            payload: refList.data
+        })
+        
+    }catch(error){
+        console.log('an error in getref saga ', error);
+    }
+}
 
 //reducers
+//SET_REFLECTIONS
 const reflectionList = (state=[], action) =>{
-    return state;
+    switch(action.type){
+        case 'SET_REFLECTION':
+            return action.payload
+        default:
+            return state
+    }
 }
 
 const store = createStore(
@@ -45,8 +66,6 @@ const store = createStore(
 )
 
 sagaMiddleware.run(rootSaga);
-
-
 
 ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
 
