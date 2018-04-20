@@ -19,7 +19,7 @@ import {
     put
 } from 'redux-saga/effects';
 import axios from 'axios';
-
+//saga stuff
 const sagaMiddleware = createSagaMiddleware();
 
 function* rootSaga(){
@@ -27,10 +27,14 @@ function* rootSaga(){
 }
 
 function* addRefSaga(action){
-    yield console.log('in addrefsaga')
+    try {
+        yield call(axios.post, '/reflection', action.payload);
+    } catch (error){
+        console.log('an error in add reflection saga');
+    }
 }
 
-
+//reducers
 const reflectionList = (state=[], action) =>{
     return state;
 }
