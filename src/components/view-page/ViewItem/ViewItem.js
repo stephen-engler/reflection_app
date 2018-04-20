@@ -9,8 +9,15 @@ import Typography from 'material-ui/Typography';
 import Card, { CardActions, CardContent } from 'material-ui/Card';
 
 const styles = {
+    root: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'space-around',
+        overflow: 'hidden',
+    },
     card: {
-        minWidth: 275,
+        width: 300,
+        margin: 20
     },
 
     title: {
@@ -38,7 +45,7 @@ class ViewItem extends Component {
     render() {
         const classes = this.props.classes
         return (
-            <div>
+            <div className = {classes.root}>
                 <Card className={classes.card}>
                     <CardContent>
                         <Typography className={classes.title}>
