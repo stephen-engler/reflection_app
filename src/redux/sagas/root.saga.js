@@ -1,7 +1,5 @@
 import {
     takeEvery,
-    call,
-    put
 } from 'redux-saga/effects';
 import { addRefSaga, getRefSaga, deleteRefSaga, bookmarkRefSaga} from './reflection.saga'
 

@@ -8,16 +8,11 @@ import {
 } from 'react-redux';
 import {
     createStore,
-    combineReducers,
     applyMiddleware
 } from 'redux';
 import logger from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
-import {
-    takeEvery,
-    call,
-    put
-} from 'redux-saga/effects';
+
 
 import reducers from './redux/reducers/reflection.reducer'
 import rootSaga from './redux/sagas/root.saga'
