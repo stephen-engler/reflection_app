@@ -27,4 +27,16 @@ router.get('/', function(req,res){
         })
 })
 
+router.delete('/:id', function(req,res){
+    let queryText = 'Delete from "reflection" WHERE id=$1';
+    pool.query(queryText, [req.params.id])
+        .then((respose)=>{
+            res.sendStatus(200);
+        })
+        .catch((error)=>{
+            console.log('an error from the server in delete ', error);
+            res.sendStatus(500);
+        })
+})
+
 module.exports = router;

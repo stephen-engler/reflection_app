@@ -25,6 +25,7 @@ const sagaMiddleware = createSagaMiddleware();
 function* rootSaga(){
     yield takeEvery('ADD_REF', addRefSaga);
     yield takeEvery('GET_REF', getRefSaga);
+    yield takeEvery('DELETE_REFLECTION', deleteRefSaga);
 }
 
 function* addRefSaga(action){
@@ -48,6 +49,17 @@ function* getRefSaga(action){
         console.log('an error in getref saga ', error);
     }
 }
+function* deleteRefSaga(action){
+    try{
+        yield call(axios.delete, `/reflection/${action.payload.id}`);
+        yield put({
+            type: 'GET_REF'
+        })
+    }catch(error){
+        console.log('an error in delete ref saga ', error);
+    }
+}
+
 
 //reducers
 //SET_REFLECTIONS

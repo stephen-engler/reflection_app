@@ -24,6 +24,17 @@ const styles = {
 
 class ViewItem extends Component {
     
+    handleClickFor=(type)=>{
+        return (
+            ()=>{
+                this.props.dispatch({
+                    type: type,
+                    payload: this.props.reflection
+                })
+            }
+        )
+    }
+
     render() {
         const classes = this.props.classes
         return (
@@ -37,6 +48,22 @@ class ViewItem extends Component {
                             {this.props.reflection.description}
                         </Typography>
                     </CardContent>
+                    <CardActions>
+                        <Button 
+                            variant="raised" 
+                            color="primary" 
+                            size="small" 
+                            onClick={this.handleClickFor('DELETE_REFLECTION')}>
+                            Delete
+                        </Button>
+                        <Button
+                            variant="raised"
+                            color="primary"
+                            size="small"
+                            onClick={this.handleClickFor('BOOKMARK_REFLECTION')}>
+                            Bookmark
+                        </Button>
+                    </CardActions>
                 </Card>
             </div>
         );
