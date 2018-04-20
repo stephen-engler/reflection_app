@@ -3,12 +3,13 @@ import {
     call,
     put
 } from 'redux-saga/effects';
-import { addRefSaga, getRefSaga, deleteRefSaga} from './reflection.saga'
+import { addRefSaga, getRefSaga, deleteRefSaga, bookmarkRefSaga} from './reflection.saga'
 
 export default function* rootSaga() {
     yield takeEvery('ADD_REF', addRefSaga);
     yield takeEvery('GET_REF', getRefSaga);
     yield takeEvery('DELETE_REFLECTION', deleteRefSaga);
+    yield takeEvery('BOOKMARK_REFLECTION', bookmarkRefSaga);
 }
 
 

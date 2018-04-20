@@ -39,3 +39,13 @@ export function* deleteRefSaga(action) {
         console.log('an error in delete ref saga ', error);
     }
 }
+export function* bookmarkRefSaga(action){
+    try{
+        yield call(axios.put, `/reflection`, action.payload);
+        yield put({
+            type: 'GET_REF'
+        })
+    }catch(error){
+        console.log('an error in bookmarkSaga ', error);
+    }
+}
