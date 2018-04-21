@@ -7,6 +7,9 @@ import { withStyles } from 'material-ui/styles';
 import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
 import Card, { CardActions, CardContent } from 'material-ui/Card';
+import Bookmark from '@material-ui/icons/Bookmark'
+
+import SnackBarComponent from '../../SnackBar/SnackBarComponent'
 
 const styles = {
     root: {
@@ -30,7 +33,7 @@ const styles = {
 };
 
 class ViewItem extends Component {
-    
+    //returns a function for each click type
     handleClickFor=(type)=>{
         return (
             ()=>{
@@ -41,6 +44,13 @@ class ViewItem extends Component {
             }
         )
     }
+    //closes the snackbar
+    handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+        this.props.dispatch({ type: 'CLOSE_SNACKBAR' })
+    };
 
     render() {
         const classes = this.props.classes
@@ -54,6 +64,7 @@ class ViewItem extends Component {
                         <Typography className={classes.pos}>
                             {this.props.reflection.description}
                         </Typography>
+                        {this.props.reflection.bookmarked && <Bookmark />}
                     </CardContent>
                     <CardActions>
                         <Button 
@@ -72,6 +83,10 @@ class ViewItem extends Component {
                         </Button>
                     </CardActions>
                 </Card>
+                <SnackBarComponent handleClose={this.handleClose}
+                    open={this.props.state.snackBarReducer.bookmarked} type='Bookmarded' />
+                <SnackBarComponent handleClose={this.handleClose}
+                    open={this.props.state.snackBarReducer.deleted} type='Deleted' />
             </div>
         );
     }

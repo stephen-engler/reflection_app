@@ -34,6 +34,10 @@ export function* deleteRefSaga(action) {
         yield put({
             type: 'GET_REF'
         })
+        yield put({
+            type: 'DELETE_SNACKBAR'
+        })
+
     } catch (error) {
         console.log('an error in delete ref saga ', error);
     }
@@ -43,6 +47,9 @@ export function* bookmarkRefSaga(action){
         yield call(axios.put, `/reflection`, action.payload);
         yield put({
             type: 'GET_REF'
+        })
+        yield put({
+            type: 'BOOKMARK_SNACKBAR'
         })
     }catch(error){
         console.log('an error in bookmarkSaga ', error);
