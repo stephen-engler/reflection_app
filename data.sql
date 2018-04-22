@@ -13,10 +13,13 @@ CREATE TABLE "reflection" (
 
 -- Sample reflection
 INSERT INTO "reflection" ("topic", "description")
-VALUES ('What went well?', 'Gave an ice breaker at public speaking practice.'),
+VALUES ('What went well?', 'Helped my fellow developers learn the material.'),
 ('Better next time?', 'Get more sleep.'),
-('What went well?', 'Built a full stack web application!'),
+('What went well?', 'Built a many full stack web applications!'),
+('What went well?', 'Taught myself React Native in my own time.'),
 ('Better next time?', 'Use trello to manage tasks.');
+('What went well?', 'Learned to work as part of a collaborative group.'),
+
 
 
 -- Stretch goal: Move topics to a separate table
