@@ -2,27 +2,22 @@ import React, { Component } from 'react';
 import TextField from 'material-ui/TextField';
 import {withStyles} from 'material-ui/styles';
 import { connect } from 'react-redux';
+import { Button } from 'material-ui';
 
 
-const styles = theme => ({
+const styles = {
     container: {
         display: 'flex',
-        flexWrap: 'wrap',
-        backgroundColor: theme.palette.background.paper,
-
+        flex: 1,
+        alignItems: 'center',
+        flexDirection: 'column',
+        justifyContent: 'center',
     },
     textField: {
-        marginLeft: theme.spacing.unit,
-        marginRight: theme.spacing.unit,
-        width: 200,
-        backgroundColor: theme.palette.background.default,
-
+        width: 400,
+        marginBottom: 20,     
     },
-    menu: {
-        width: '100%',
-
-    },
-});
+};
 
 class AddPage extends Component {
     constructor(props){
@@ -60,21 +55,34 @@ class AddPage extends Component {
     render() {
         return (
             <div className={this.props.classes.container}>
-                <input 
+                <TextField 
+                    id="textarea"
+                    label="topic"
+                    multiline
                     type="text" 
                     value={this.state.userInput.topic} 
                     placeholder="topic"
                     onChange={this.handleChangeFor('topic')}
+                    className={this.props.classes.textField}
                 />
-                <input 
+                <TextField 
+                    id="textarea"
+                    label="description"
                     type="text" 
+                    multiline
+                    rows='4'
                     value={this.state.userInput.reflection} 
                     placeholder="reflection"
                     onChange={this.handleChangeFor('reflection')}
+                    className={this.props.classes.textField}
                 />
-                <button onClick={this.addNewReflection}>
+                <Button 
+                    onClick={this.addNewReflection}
+                    variant='raised'
+                    color='primary'
+                    >
                     Submit
-                </button>
+                </Button>
 
             </div>
         );

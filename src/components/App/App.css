@@ -17,3 +17,27 @@
   font-size: large;
 }
 
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #4286f4;
+}
+
+li {
+  float: left;
+}
+
+li .Nav-Bar {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li .Nav-Bar:hover {
+  background-color: #778899;
+}
+

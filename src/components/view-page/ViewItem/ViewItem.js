@@ -13,14 +13,18 @@ import SnackBarComponent from '../../SnackBar/SnackBarComponent'
 
 const styles = {
     root: {
-        display: 'flex',
+        display: 'inline-block',
         flexWrap: 'wrap',
         justifyContent: 'space-around',
         overflow: 'hidden',
     },
     card: {
         width: 300,
+        height: 200,
         margin: 20
+    },
+    cardContent:{
+        height: 100,
     },
 
     title: {
@@ -30,6 +34,14 @@ const styles = {
     pos: {
         marginBottom: 12,
     },
+    cardActions: {
+        position: 'relative',
+        right: 0,
+        bottom: 0,
+        display: 'flex',
+        justifyContent: 'flex-start',
+        verticalAlign: 'bottom',
+    }
 };
 
 class ViewItem extends Component {
@@ -57,16 +69,16 @@ class ViewItem extends Component {
         return (
             <div className = {classes.root}>
                 <Card className={classes.card}>
-                    <CardContent>
+                    <CardContent className={classes.cardContent}>
                         <Typography className={classes.title}>
                             {this.props.reflection.topic}
                         </Typography>
                         <Typography className={classes.pos}>
                             {this.props.reflection.description}
                         </Typography>
-                        {this.props.reflection.bookmarked && <Bookmark />}
+                        
                     </CardContent>
-                    <CardActions>
+                    <CardActions className={classes.cardActions}>
                         <Button 
                             variant="raised" 
                             color="primary" 
@@ -81,6 +93,7 @@ class ViewItem extends Component {
                             onClick={this.handleClickFor('BOOKMARK_REFLECTION')}>
                             Bookmark
                         </Button>
+                        {this.props.reflection.bookmarked && <Bookmark />}
                     </CardActions>
                 </Card>
                 <SnackBarComponent handleClose={this.handleClose}

@@ -11,16 +11,15 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <br/>
         <Router>
           <div>
             <nav>
               <ul>
                 <li>
-                  <Link to="/">Add New Reflection</Link>
+                  <Link className="Nav-Bar" to="/">Add New Reflection</Link>
                 </li>
                 <li>
-                  <Link to="/view">View Reflections</Link>
+                  <Link className="Nav-Bar" to="/view">View Reflections</Link>
                 </li>
               </ul>
             </nav>
