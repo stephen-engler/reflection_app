@@ -19,9 +19,8 @@ npm run client
 
 
 ## ToDo
-
+- Dialog to confirm delete
 - Deploy the project to Heroku
-- Improve the stying of the app using Material-UI cards, buttons, nav bar and icons
 - Add the ability to update an existing reflection
 - Move reflection topics into a separate table and use SQL JOINs
 - Allow users to include an image with the reflection using [Filestack](https://www.filestack.com/)

@@ -42,6 +42,7 @@ export function* deleteRefSaga(action) {
     }
 }
 //updates reflection for bookmark, gets updated reflections, dispatches snackbar
+//update is done server side, just sends whole object
 export function* bookmarkRefSaga(action){
     try{
         yield call(axios.put, `/reflection`, action.payload);
