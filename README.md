@@ -1,4 +1,5 @@
 
+A full stack web app where users can input, save, and bookmark reflections about their past.  Tech used: React, Redux, Saga, Material-ui, Node.js, Express, Postgresql, and Axios. 
 
 ### SETUP
 
