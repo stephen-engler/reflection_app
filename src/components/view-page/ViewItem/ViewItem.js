@@ -69,16 +69,20 @@ class ViewItem extends Component {
         return (
             <div className = {classes.root}>
                 <Card className={classes.card}>
+
                     <CardContent className={classes.cardContent}>
+                        {/* Topic */}
                         <Typography className={classes.title}>
                             {this.props.reflection.topic}
                         </Typography>
+                        {/* Description */}
                         <Typography className={classes.pos}>
                             {this.props.reflection.description}
                         </Typography>
-                        
                     </CardContent>
+
                     <CardActions className={classes.cardActions}>
+                    {/* Delete */}
                         <Button 
                             variant="raised" 
                             color="primary" 
@@ -86,6 +90,7 @@ class ViewItem extends Component {
                             onClick={this.handleClickFor('DELETE_REFLECTION')}>
                             Delete
                         </Button>
+                        {/* Bookmark */}
                         <Button
                             variant="raised"
                             color="primary"
@@ -93,9 +98,11 @@ class ViewItem extends Component {
                             onClick={this.handleClickFor('BOOKMARK_REFLECTION')}>
                             Bookmark
                         </Button>
+                        {/* Shows Bookmark */}
                         {this.props.reflection.bookmarked && <Bookmark />}
                     </CardActions>
                 </Card>
+                {/* Snackbars */}
                 <SnackBarComponent handleClose={this.handleClose}
                     open={this.props.state.snackBarReducer.bookmarked} type='Bookmarded' />
                 <SnackBarComponent handleClose={this.handleClose}

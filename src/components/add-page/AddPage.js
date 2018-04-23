@@ -55,6 +55,7 @@ class AddPage extends Component {
     render() {
         return (
             <div className={this.props.classes.container}>
+                {/* Topic Text field */}
                 <TextField 
                     id="textarea"
                     label="topic"
@@ -65,6 +66,7 @@ class AddPage extends Component {
                     onChange={this.handleChangeFor('topic')}
                     className={this.props.classes.textField}
                 />
+                {/* Reflection text field */}
                 <TextField 
                     id="textarea"
                     label="description"
@@ -76,6 +78,7 @@ class AddPage extends Component {
                     onChange={this.handleChangeFor('reflection')}
                     className={this.props.classes.textField}
                 />
+                {/* Submit button */}
                 <Button 
                     onClick={this.addNewReflection}
                     variant='raised'

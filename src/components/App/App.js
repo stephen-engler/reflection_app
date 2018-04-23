@@ -15,6 +15,7 @@ class App extends Component {
           <div>
             <nav>
               <ul>
+                {/* Sets links */}
                 <li>
                   <Link className="Nav-Bar" to="/">Add New Reflection</Link>
                 </li>
@@ -23,6 +24,7 @@ class App extends Component {
                 </li>
               </ul>
             </nav>
+            {/* Sets routes for links */}
             < Route exact path='/' component={AddPage} />
             < Route path='/view' component={ViewPage} />
           </div>

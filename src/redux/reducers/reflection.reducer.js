@@ -13,13 +13,18 @@ const reflectionList = (state = [], action) => {
 }
 
 const snackBarReducer = (state = {}, action) => {
+    //sets the property to true so snackbars know to open
     switch (action.type) {
+        // Shows bookmark snackbar
         case 'BOOKMARK_SNACKBAR':
             return { bookmarked: true }
+        //shows delete snackbar
         case 'DELETE_SNACKBAR':
             return { deleted: true }
+        //shows add snackbar
         case 'ADD_SNACKBAR':
             return { added: true }
+        //closes all snackbars
         case 'CLOSE_SNACKBAR':
             return { bookmarked: false, deleted: false, added: false }
         default:
