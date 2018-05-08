@@ -4,19 +4,12 @@ import Snackbar from 'material-ui/Snackbar';
 import IconButton from 'material-ui/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 
-const styles = theme => ({
-    close: {
-        width: theme.spacing.unit * 4,
-        height: theme.spacing.unit * 4,
-    },
-});
-
 
 class SnackBarComponent extends Component {
 
     render() {
-        const { classes } = this.props;
-
+        //destructure props
+        const { classes, handleClose, type, open } = this.props;
         return (
             <div>
                 <Snackbar
@@ -24,20 +17,23 @@ class SnackBarComponent extends Component {
                         vertical: 'bottom',
                         horizontal: 'left',
                     }}
-                    open={this.props.open}
+                    //tells the snackbar when to open, is either true or false
+                    open={open}
                     autoHideDuration={2000}
-                    onClose={this.props.handleClose}
+                    onClose={handleClose}
                     SnackbarContentProps={{
                         'aria-describedby': 'message-id',
                     }}
-                    message={<span id="message-id">{this.props.type}</span>}
+                    //message is passed as a prop
+                    message={<span id="message-id">{type}</span>}
                     action={[
+                        //button to close snackbar
                         <IconButton
                             key="close"
                             aria-label="Close"
                             color="inherit"
                             className={classes.close}
-                            onClick={this.props.handleClose}
+                            onClick={handleClose}
                         >
                             <CloseIcon />
                         </IconButton>,
@@ -47,5 +43,12 @@ class SnackBarComponent extends Component {
         )
     }
 }
+
+const styles = theme => ({
+  close: {
+    width: theme.spacing.unit * 4,
+    height: theme.spacing.unit * 4
+  }
+});
 
 export default withStyles(styles)(SnackBarComponent);

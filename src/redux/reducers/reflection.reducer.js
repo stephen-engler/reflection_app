@@ -1,8 +1,9 @@
 import { combineReducers } from "redux";
 
-
 //reducers
+
 //SET_REFLECTIONS
+//array of all reflections 
 const reflectionList = (state = [], action) => {
     switch (action.type) {
         case 'SET_REFLECTION':
@@ -11,8 +12,14 @@ const reflectionList = (state = [], action) => {
             return state
     }
 }
+//inital state of snackBar reducer
+const snackBarInitialState = {
+    bookmarked: false,
+    deleted: false,
+    added: false,
+}
 
-const snackBarReducer = (state = {}, action) => {
+const snackBarReducer = (state = snackBarInitialState, action) => {
     //sets the property to true so snackbars know to open
     switch (action.type) {
         // Shows bookmark snackbar

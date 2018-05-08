@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool');
 
+//Adds reflection to the reflection table
 router.post('/', function(req,res){
     console.log(req.body);
     let queryText = `INSERT INTO "reflection"("topic", "description") VALUES ($1,$2)`;
@@ -14,7 +15,7 @@ router.post('/', function(req,res){
             res.sendStatus(500);
         })
 })
-
+//Gets all reflections from table and orders by id to keep consistent 
 router.get('/', function(req,res){
     let queryText = `SELECT * FROM "reflection" ORDER BY id;`
     pool.query(queryText)
@@ -26,7 +27,7 @@ router.get('/', function(req,res){
             res.sendStatus(500);
         })
 })
-
+//Deletes by id
 router.delete('/:id', function(req,res){
     let queryText = 'Delete from "reflection" WHERE id=$1';
     pool.query(queryText, [req.params.id])
@@ -38,7 +39,7 @@ router.delete('/:id', function(req,res){
             res.sendStatus(500);
         })
 })
-
+//updates the reflection and whether it is bookmarked
 router.put('/', function(req,res){
     let bookmarked = !req.body.bookmarked;
     let queryText = `UPDATE "reflection" SET "bookmarked"=$1 WHERE id=$2`

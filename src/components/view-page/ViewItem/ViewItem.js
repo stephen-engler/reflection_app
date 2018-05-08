@@ -12,17 +12,20 @@ import Bookmark from '@material-ui/icons/Bookmark'
 import SnackBarComponent from '../../SnackBar/SnackBarComponent'
 
 const styles = {
+    //makes cards wrap and with space between
     root: {
         display: 'inline-block',
         flexWrap: 'wrap',
         justifyContent: 'space-around',
         overflow: 'hidden',
     },
+    //gives height and width to cards
     card: {
         width: 300,
         height: 200,
         margin: 20
     },
+    //set height for content
     cardContent:{
         height: 100,
     },
@@ -34,6 +37,7 @@ const styles = {
     pos: {
         marginBottom: 12,
     },
+    //position of buttons 
     cardActions: {
         position: 'relative',
         right: 0,
@@ -46,6 +50,7 @@ const styles = {
 
 class ViewItem extends Component {
     //returns a function for each click type
+    //expects an action string, sends the reflection as payload
     handleClickFor=(type)=>{
         return (
             ()=>{
@@ -57,6 +62,7 @@ class ViewItem extends Component {
         )
     }
     //closes the snackbar
+    //snackbar opening and closing is handled in redux store
     handleClose = (event, reason) => {
         if (reason === 'clickaway') {
             return;
@@ -65,19 +71,22 @@ class ViewItem extends Component {
     };
 
     render() {
-        const classes = this.props.classes
+        //destructure props
+        const {classes, reflection} = this.props;
+        const {snackBarReducer}= this.props.state;
+
         return (
             <div className = {classes.root}>
+            {/* Card */}
                 <Card className={classes.card}>
-
                     <CardContent className={classes.cardContent}>
                         {/* Topic */}
                         <Typography className={classes.title}>
-                            {this.props.reflection.topic}
+                            {reflection.topic}
                         </Typography>
                         {/* Description */}
                         <Typography className={classes.pos}>
-                            {this.props.reflection.description}
+                            {reflection.description}
                         </Typography>
                     </CardContent>
 
@@ -98,15 +107,15 @@ class ViewItem extends Component {
                             onClick={this.handleClickFor('BOOKMARK_REFLECTION')}>
                             Bookmark
                         </Button>
-                        {/* Shows Bookmark */}
-                        {this.props.reflection.bookmarked && <Bookmark />}
+                        {/* Shows Bookmark  if true*/}
+                        {reflection.bookmarked && <Bookmark />}
                     </CardActions>
                 </Card>
                 {/* Snackbars */}
                 <SnackBarComponent handleClose={this.handleClose}
-                    open={this.props.state.snackBarReducer.bookmarked} type='Bookmarded' />
+                    open={snackBarReducer.bookmarked} type='Bookmarked' />
                 <SnackBarComponent handleClose={this.handleClose}
-                    open={this.props.state.snackBarReducer.deleted} type='Deleted' />
+                    open={snackBarReducer.deleted} type='Deleted' />
             </div>
         );
     }

@@ -5,19 +5,6 @@ import { connect } from 'react-redux';
 import { Button } from 'material-ui';
 
 
-const styles = {
-    container: {
-        display: 'flex',
-        flex: 1,
-        alignItems: 'center',
-        flexDirection: 'column',
-        justifyContent: 'center',
-    },
-    textField: {
-        width: 400,
-        marginBottom: 20,     
-    },
-};
 
 class AddPage extends Component {
     constructor(props){
@@ -29,7 +16,8 @@ class AddPage extends Component {
             }
         }
     }
-
+    // curried function returns function to be called on click
+    //expects the state object parameter as a string
     handleChangeFor = (type) => {
         return (event) => {
             this.setState({
@@ -40,7 +28,8 @@ class AddPage extends Component {
             })
         }
     }
-
+    //dispatches the ADD_REF action, sends state.userInput as its payload
+    //resets state
     addNewReflection = ()=>{
         this.props.dispatch({type: 'ADD_REF', payload: this.state.userInput})
         this.setState({
@@ -91,6 +80,23 @@ class AddPage extends Component {
         );
     }
 }
+
+// styles for the component
+// added to the withStyles higher order component 
+//which returns this component with the classes added onto props
+const styles = {
+    container: {
+        display: 'flex',
+        flex: 1,
+        alignItems: 'center',
+        flexDirection: 'column',
+        justifyContent: 'center',
+    },
+    textField: {
+        width: 400,
+        marginBottom: 20,     
+    },
+};
 
 const mapStateToProps = state => ({
     state,
